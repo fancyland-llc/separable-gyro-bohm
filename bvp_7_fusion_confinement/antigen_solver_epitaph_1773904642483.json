@@ -1,0 +1,94 @@
+{
+    "runId": 1773904642483,
+    "version": "4.0.0",
+    "timestamp": "2026-03-19T07:26:42.166Z",
+    "bvpName": "BOLTZMANN_FUSION_CONFINEMENT",
+    "total_waves": 2,
+    "converged": false,
+    "best_error": 0.629767068646158,
+    "best_technique": "spectral_boltzmann_on_rational_surface_lattice",
+    "error_trajectory": [0.9999, 0.6298],
+    "graveyard_techniques": [
+        {
+            "technique": "T_eff = P/(n_e * B_T^2 * R^3) with geometry factor sqrt(I_p * B_T / n_e)",
+            "class": "statistical_mechanics",
+            "wave_of_death": 1,
+            "error_at_death": 0.6298,
+            "failure_mode": "DIMENSIONAL_CATASTROPHE_FOR_TOKAMAKS — T_eff ~ 1e-15 freezes lattice, all tokamak predictions ~ 1e-8s instead of 0.1-0.9s. Geometry factor sqrt(I_p*B_T/n_e) ~ 1e-6 makes it worse. PARTIAL SUCCESS: Stellarators W7-X=21% error, LHD=31% error because I_p=0 zeros the bad factor. FIX: Replace sqrt(I_p*B_T/n_e) with q_edge = 5*a^2*B_T*kappa/(R*I_p) — dimensionless, O(1). Stellarator formula tau_E ~ R^2 * epsilon^0.58 / n_states already works.",
+            "co_death_count": 7
+        },
+        {
+            "technique": "T_eff = P/(n_e * V_plasma) direct power balance temperature",
+            "class": "spectral_graph_theory",
+            "wave_of_death": 0,
+            "error_at_death": 0.9999,
+            "failure_mode": "DIMENSIONAL_CATASTROPHE — T_eff ~ 1e-14 to 1e-15 for all machines. Boltzmann weights exp(-d/T_eff) all collapse to 0. Lattice completely frozen. Spectral gap = 0. All predictions = 0.",
+            "co_death_count": 7
+        },
+        {
+            "technique": "T_eff = 1/ln(S) Lundquist number temperature with fitted coefficients",
+            "class": "spectral_graph_theory",
+            "wave_of_death": 1,
+            "error_at_death": 1.0,
+            "failure_mode": "PARAMETER_FITTING — Used L-BFGS-B to fit 5 coefficients to Basin A data. This is curve fitting, not BVP derivation. Stellarator predictions wildly off (W7-X: 1.92s vs 0.15s, 12x overshoot). The fitting overfits tokamak regime and does not transfer.",
+            "co_death_count": 0
+        }
+    ],
+    "technique_genealogy_summary": {
+        "total_techniques_tried": 16,
+        "distinct_techniques": 12,
+        "graveyard_size": 3,
+        "translation_gap_count": 0,
+        "g1_reproposals": 0
+    },
+    "failure_locus_summary": {
+        "total_failures": 14,
+        "cluster_type": "DIMENSIONAL_CATASTROPHE",
+        "locus_values": ["T_eff_too_small", "frozen_lattice", "geometry_factor_kills_tokamaks"]
+    },
+    "insight_trajectory_summary": {
+        "final_l1_similarity": 0.193,
+        "final_l2_similarity": 0.931,
+        "solver_diversity": 0.931,
+        "domain_entropy": 0.965
+    },
+    "reformulation_signals": {
+        "technique_classes_tried": 12,
+        "distinct_techniques": 12,
+        "class_histogram": {
+            "spectral_graph_laplacian": 3,
+            "statistical_mechanics_on_graphs": 4,
+            "spectral_graph_theory": 3,
+            "spectral_statistical": 2
+        },
+        "error_plateaued": false,
+        "broad_locus": true,
+        "iedi": {
+            "diversity_trend": "DECLINING",
+            "error_trend": "IMPROVING",
+            "coupled": true,
+            "ratio": 0.37
+        },
+        "reformulation_signal": true,
+        "breakthrough_signal": {
+            "worker": "Wave 1, Worker 2 (claude-opus-4-20250514)",
+            "stellarator_errors": { "W7-X": 0.21, "LHD": 0.31 },
+            "tokamak_errors": "ALL ~1.0 (dimensional catastrophe)",
+            "hypothesis": "Framework is correct for stellarators. Tokamak extension broken at I_p coupling. Need dimensionless I_p factor that is O(1) not O(1e-6). The natural candidate is the cylindrical safety factor q_edge = 5*a^2*B_T*kappa / (R*I_p).",
+            "stellarator_formula_that_works": "tau_E = R^2 * epsilon^0.58 * kappa^0.78 / (n_states * chi_0) — no plasma current term"
+        }
+    },
+    "crystal": {
+        "technique": "spectral_boltzmann_on_rational_surface_lattice",
+        "error": 0.629767068646158,
+        "archetype": "HELICASE"
+    },
+    "wilson_loop": {
+        "berry_phase_trajectory": [0, 0],
+        "tension_trajectory": [0.0348, -0.0204],
+        "phase_transitions_detected": [],
+        "final_berry_phase": 0,
+        "whimsy_waves_fired": 0,
+        "waves_accumulated": 2
+    }
+}

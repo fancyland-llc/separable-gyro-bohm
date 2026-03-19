@@ -1,0 +1,458 @@
+{
+  "version": "4.0.0",
+  "architecture": "Antigen Factory v4.0 — Two-Layer + Wilson Loop + Tension Metric",
+  "timestamp": "2026-03-19T09:17:30.590Z",
+  "config": {
+    "problemSpec": "BVP-7: Boltzmann Confinement — Zero-Parameter Fusion Scaling\n\nThe ITER energy confinement scaling law IPB98(y,2) predicts energy confinement time as:\n\n  τ_E = 0.0562 · I_p^0.93 · B_T^0.15 · n_e^0.41 · P^-0.69 · R^1.97 · ε^0.58 · κ^0.78 · M^0.19\n\nThis formula has 8 fitted exponents and a fitted prefactor. It was derived by regression over ~2000 H-mode discharges from 17 tokamaks. It works. But it does not explain WHY those exponents have those values.\n\nThe Boltzmann Prime Transition result (BVP-5",
+    "groundTruth": "Ground truth (the swarm is given the IPB98 formula and experimental ranges but NOT the derivation path):\n\n- IPB98(y,2) scaling: τ_E = 0.0562 · I_p^0.93 · B_T^0.15 · n_e^0.41 · P^-0.69 · R^1.97 · ε^0.58 · κ^0.78 · M^0.19\n- RMSE of IPB98 against the multi-machine database: ~15-20%\n- JET best H-mode confinement: τ_E ≈ 0.3-0.9s (H-mode range)\n- ITER projected: τ_E ≈ 3.7s (Q=10 baseline)\n- Key plasma physics the swarm may discover:\n  * Landau quantization creates discrete energy levels in B-field\n  *",
+    "nWorkers": 8,
+    "maxWaves": 16,
+    "isomorphicTemp": 0.7,
+    "mathTemp": 0.1,
+    "bvpName": "BOLTZMANN_FUSION_CONFINEMENT",
+    "bvpMode": "CONVERGENT",
+    "hasAnchors": true,
+    "hasOracle": true
+  },
+  "summary": {
+    "totalWaves": 3,
+    "totalL1Workers": 24,
+    "totalL2Workers": 21,
+    "converged": false,
+    "globalBestError": 1,
+    "globalBestWave": 0,
+    "totalTokens": 63303,
+    "totalDuration_ms": 1353067,
+    "totalDuration_min": "22.55",
+    "haltReason": "INTRACTABLE"
+  },
+  "errorTrajectory": [
+    1,
+    1,
+    1
+  ],
+  "phononTraceHistory": [
+    0.2955205714285714,
+    0.4667745,
+    0.49086016666666665
+  ],
+  "berryPhaseHistory": [
+    0,
+    0,
+    0
+  ],
+  "tensionHistory": [
+    -0.04898775890010876,
+    0.016595378173058783,
+    0.015211856521228584
+  ],
+  "mendelianModeHistory": [
+    "WORK",
+    "CHAOTIC",
+    "CHAOTIC"
+  ],
+  "crystal": null,
+  "epitaph": {
+    "runId": 1773910497523,
+    "version": "4.0.0",
+    "timestamp": "2026-03-19T09:17:30.589Z",
+    "bvpName": "BOLTZMANN_FUSION_CONFINEMENT",
+    "total_waves": 3,
+    "converged": false,
+    "best_error": 1,
+    "best_technique": "<name>Self-Consistent Relaxation Algorithm</name>\n    <description>\n      Solve the coupled system where T_eff is both an input parameter and an output of the partition function calculation. The steady-state confinement is the fixed point of the relaxation dynamics.\n    </description>\n    <algorithm_steps>\n      <step number=\"1\">Initialize T_eff^(0) with an estimate based on driven power and magnetic energy scale</step>\n      <step number=\"2\">Compute partition function Z^(k) = Σ_m exp(-m / T_eff^(k))</step>\n      <step number=\"3\">Update confinement time τ_conf^(k) = C / Z^(k)</step>\n      <step number=\"4\">Recalculate T_eff^(k+1) based on updated state density and transport properties</step>\n      <step number=\"5\">Check convergence: if |T_eff^(k+1) - T_eff^(k)| &lt; ε, stop; otherwise return to step 2</step>\n    </algorithm_steps>\n    <convergence_criterion>Fixed-point stability analysis via Jacobian of the relaxation map</convergence_criterion>",
+    "error_trajectory": [
+      1,
+      1,
+      1
+    ],
+    "graveyard_techniques": [
+      "network on percolation rational surface threshold",
+      "0 1 2 3 4 5 accessible apply based calculate compute confinement consistency constraints coupling current dimensional domain e eff enumerate exp f farey function geometric lattice m magnetic method n number on over partition pruning q rational state states stellarator step steps summation surfaces t the time tokamak topology total validate with within z"
+    ],
+    "technique_genealogy_summary": {
+      "total_techniques_tried": 21,
+      "distinct_techniques": 21,
+      "graveyard_size": 2,
+      "translation_gap_count": 0,
+      "g1_reproposals": 0
+    },
+    "failure_locus_summary": {
+      "total_failures": 2,
+      "cluster_type": "UNKNOWN",
+      "locus_values": []
+    },
+    "insight_trajectory_summary": {
+      "final_l1_similarity": 0.16417270935159298,
+      "final_l2_similarity": 0.2833333333333333,
+      "solver_diversity": 0.9697238998682473,
+      "domain_entropy": 0.9849357563894758
+    },
+    "reformulation_signals": {
+      "technique_classes_tried": 16,
+      "distinct_techniques": 21,
+      "class_histogram": {
+        "farey_lattice": 1,
+        "0_1": 2,
+        "chain_first": 1,
+        "method_mode": 1,
+        "1_2": 2,
+        "gap_graph": 1,
+        "be_completed": 2,
+        "based_function": 1,
+        "constraint_percolation": 1,
+        "0_150": 1,
+        "group_percolation": 1,
+        "across_analysis": 1,
+        "network_on": 1,
+        "a_accessible": 3,
+        "bethe_group": 1,
+        "2_a": 1
+      },
+      "error_plateaued": true,
+      "broad_locus": false,
+      "iedi": {
+        "diversity_trend": "DEGRADING",
+        "error_trend": "PLATEAU",
+        "coupled": false,
+        "ratio": null
+      },
+      "reformulation_signal": true
+    },
+    "crystal": null,
+    "wilson_loop": {
+      "berry_phase_trajectory": [
+        0,
+        0,
+        0
+      ],
+      "tension_trajectory": [
+        -0.04898775890010876,
+        0.016595378173058783,
+        0.015211856521228584
+      ],
+      "phase_transitions_detected": [],
+      "final_berry_phase": 0,
+      "whimsy_waves_fired": 0,
+      "waves_accumulated": 3
+    }
+  },
+  "dreamShaclHistory": [
+    {
+      "wave": 0,
+      "success": false,
+      "timestamp": "2026-03-19T09:02:37.629Z",
+      "dead_count": 3,
+      "math_failures": 0,
+      "meta": {
+        "reason": "no_json_output",
+        "stdout": "{\"dream_shacl_version\": \"1.0\", \"dead_manifolds\": [{\"center\": [0.5, 0.5, 0.7], \"radius\": 0.5, \"class\": \"spectral_graph_theory\", \"mode\": \"DIMENSIONAL_CATASTROPHE\"}, {\"center\": [0.5, 0.5, 0.7], \"radius\": 0.5, \"class\": \"spectral_graph_theory\", \"mode\": \"PARAMETER_FITTING\"}, {\"center\": [-0.5, 0.5, 0.7], \"radius\": 0.426, \"class\": \"statistical_mechanics\", \"mode\": \"DIMENSIONAL_CATASTROPHE_FOR_TOKAMAKS\"}], \"basin_walls\": [{\"point\": [0.5, 0.5, 0.7], \"normal\": [NaN, NaN, NaN], \"separates\": [\"spectral_graph_",
+        "duration_ms": 35709
+      },
+      "reason": "no_json_output"
+    },
+    {
+      "wave": 1,
+      "success": true,
+      "timestamp": "2026-03-19T09:09:00.834Z",
+      "dead_count": 4,
+      "math_failures": 1,
+      "meta": {
+        "version": "0.2.3",
+        "duration_ms": 39089,
+        "dsg_code_length": 5986,
+        "object_size": 2551,
+        "validation": {
+          "valid": false,
+          "issues": [
+            "Hologram R-factor 0.667 < 0.8: mean R=0.667 across 3 fragments (1/3 pass individually)"
+          ],
+          "scores": {
+            "hologram": 0.667,
+            "holographic": false,
+            "manifold_depth": 1,
+            "routing": 1,
+            "overall": 0.867
+          },
+          "objectSize": 2551
+        },
+        "geometry_summary": {
+          "total_dead": 4,
+          "dead_classes": 1,
+          "co_death_clusters": 1,
+          "unexplored_classes": [
+            "continuation",
+            "collocation",
+            "shooting",
+            "root_finding",
+            "finite_difference",
+            "relaxation",
+            "variational",
+            "integral",
+            "stochastic",
+            "symbolic"
+          ],
+          "math_failures_injected": 1
+        }
+      },
+      "object": {
+        "dream_shacl_version": "1.0",
+        "dead_manifolds": [
+          {
+            "class": "spectral_graph_theory",
+            "basin_radius": 0.8,
+            "failure_signature": "dimensional_collapse",
+            "boundary": "exp(-d/T_eff) < 1e-10",
+            "toxic_parameters": [
+              "T_eff",
+              "spectral_gap",
+              "laplacian_eigenvalues"
+            ]
+          },
+          {
+            "class": "statistical_mechanics",
+            "basin_radius": 0.6,
+            "failure_signature": "geometry_factor_collapse",
+            "boundary": "sqrt(I_p*B_T/n_e) < 1e-5",
+            "toxic_parameters": [
+              "partition_function",
+              "boltzmann_weights",
+              "geometry_factors"
+            ]
+          }
+        ],
+        "basin_walls": [
+          {
+            "name": "dimensional_collapse_wall",
+            "equation": "T_eff > 1e-10",
+            "normal_vector": [
+              0,
+              0,
+              1
+            ],
+            "dead_side": "T_eff < 1e-10"
+          },
+          {
+            "name": "geometry_factor_wall",
+            "equation": "q_edge = 5*a^2*B_T*kappa/(R*I_p) ~ O(1)",
+            "normal_vector": [
+              1,
+              0,
+              0
+            ],
+            "dead_side": "sqrt(I_p*B_T/n_e) < 1e-5"
+          }
+        ],
+        "routing_vectors": [
+          {
+            "from": "spectral_graph_theory",
+            "to": "variational",
+            "vector": [
+              0.7,
+              0.7,
+              0
+            ],
+            "rationale": "variational methods avoid eigenvalue collapse"
+          },
+          {
+            "from": "statistical_mechanics",
+            "to": "integral",
+            "vector": [
+              -0.8,
+              0.6,
+              0
+            ],
+            "rationale": "integral formulations bypass partition functions"
+          },
+          {
+            "from": "any_dead_zone",
+            "to": "continuation",
+            "vector": [
+              0.5,
+              0.5,
+              0.7
+            ],
+            "rationale": "continuation tracks solution branches through parameter space"
+          }
+        ],
+        "orthogonal_constraints": [
+          {
+            "name": "energy_confinement_scaling",
+            "constraint": "tau_E ~ I_p^0.93 * B_T^0.15 * n_e^0.41",
+            "type": "empirical_bound"
+          },
+          {
+            "name": "dimensionless_safety_factor",
+            "constraint": "q_edge = 5*a^2*B_T*kappa/(R*I_p) ~ O(1)",
+            "type": "physics_requirement"
+          },
+          {
+            "name": "stellarator_scaling",
+            "constraint": "tau_E_stellarator ~ R^2 * epsilon^0.58 / n_states",
+            "type": "device_specific"
+          }
+        ],
+        "alive_territory": {
+          "unexplored_classes": [
+            "continuation",
+            "collocation",
+            "shooting",
+            "root_finding",
+            "finite_difference",
+            "relaxation",
+            "variational",
+            "integral",
+            "stochastic",
+            "symbolic"
+          ],
+          "promising_directions": [
+            "continuation",
+            "variational",
+            "integral"
+          ],
+          "safe_parameters": [
+            "q_edge",
+            "R",
+            "epsilon",
+            "kappa"
+          ]
+        },
+        "hologram_fragments": [
+          {
+            "dead_classes": [
+              "spectral_graph_theory"
+            ],
+            "routing_from_here": [
+              {
+                "to": "variational",
+                "vector": [
+                  0.7,
+                  0.7,
+                  0
+                ]
+              }
+            ],
+            "constraint": {
+              "name": "energy_confinement_scaling",
+              "constraint": "tau_E ~ I_p^0.93 * B_T^0.15 * n_e^0.41"
+            }
+          },
+          {
+            "dead_classes": [
+              "statistical_mechanics"
+            ],
+            "routing_from_here": [
+              {
+                "to": "integral",
+                "vector": [
+                  -0.8,
+                  0.6,
+                  0
+                ]
+              }
+            ],
+            "constraint": {
+              "name": "dimensionless_safety_factor",
+              "constraint": "q_edge = 5*a^2*B_T*kappa/(R*I_p) ~ O(1)"
+            }
+          },
+          {
+            "dead_classes": [
+              "spectral_graph_theory",
+              "statistical_mechanics"
+            ],
+            "routing_from_here": [
+              {
+                "to": "continuation",
+                "vector": [
+                  0.5,
+                  0.5,
+                  0.7
+                ]
+              }
+            ],
+            "constraint": {
+              "name": "stellarator_scaling",
+              "constraint": "tau_E_stellarator ~ R^2 * epsilon^0.58 / n_states"
+            }
+          }
+        ]
+      },
+      "directive_length": 1410,
+      "directive_snippet": "DREAM SHACL — NEGATIVE TOPOLOGY CONSTRAINT MANIFOLD:\nThe following describes the GEOMETRY of dead technique space, not just dead points.\nAvoid the ENTIRE MANIFOLD, not just named techniques.\n\nDEAD MANIFOLDS (avoid the entire region, not just the center):\n  ✗ spectral_graph_theory (basin radius: 0.8): exp(-d/T_eff) < 1e-10\n  ✗ statistical_mechanics (basin radius: 0.6): sqrt(I_p*B_T/n_e) < 1e-5\n\nBASIN WALLS (topology boundaries — the edges of dead space):\n  │ dimensional_collapse_wall\n  │ geometry_factor_wall\n\nROUTING VECTORS (suggested escape directions):\n  → {\"from\":\"spectral_graph_theory\",\"to\":\"variational\",\"vector\":[0.7,0.7,0],\"rationale\":\"variational methods avoid eigenvalue collapse\"}\n  → {\"from\":\"statistical_mechanics\",\"to\":\"integral\",\"vector\":[-0.8,0.6,0],\"rationale\":\"integral formulations bypass partition functions\"}\n  → {\"from\":\"any_dead_zone\",\"to\":\"continuation\",\"vector\":[0.5,0.5,0.7],\"rationale\":\"continuation tracks solution branches through parameter space\"}\n\nORTHOGONAL CONSTRAINTS (physics-derived — apply everywhere):\n  ⊥ tau_E ~ I_p^0.93 * B_T^0.15 * n_e^0.41\n  ⊥ q_edge = 5*a^2*B_T*kappa/(R*I_p) ~ O(1)\n  ⊥ tau_E_stellarator ~ R^2 * epsilon^0.58 / n_states\n\nUNEXPLORED TERRITORY: continuation, collocation, shooting, root_finding, finite_difference, relaxation, variational, integral, stochastic, symbolic\nRoute through unexplored territory — these technique classes have no dead.",
+      "validation": {
+        "valid": false,
+        "issues": [
+          "Hologram R-factor 0.667 < 0.8: mean R=0.667 across 3 fragments (1/3 pass individually)"
+        ],
+        "scores": {
+          "hologram": 0.667,
+          "holographic": false,
+          "manifold_depth": 1,
+          "routing": 1,
+          "overall": 0.867
+        },
+        "objectSize": 2551
+      }
+    }
+  ],
+  "waves": [
+    {
+      "wave": 0,
+      "bestError": 1,
+      "bestWorkerIdx": 1,
+      "bestArchetype": "HELICASE",
+      "bestSubstrate": "gemini-3.1-pro-preview",
+      "successCount": 7,
+      "workerCount": 8,
+      "gatePassedCount": 7,
+      "archetypeCounts": {
+        "POLYMERASE": 0,
+        "HELICASE": 7,
+        "LIGASE": 0
+      },
+      "totalTokens": 22016,
+      "duration_ms": 424248,
+      "phononTrace": 0.2955205714285714,
+      "mendelianMode": "WORK"
+    },
+    {
+      "wave": 1,
+      "bestError": 1,
+      "bestWorkerIdx": 0,
+      "bestArchetype": "HELICASE",
+      "bestSubstrate": "claude-opus-4-20250514",
+      "successCount": 7,
+      "workerCount": 8,
+      "gatePassedCount": 8,
+      "archetypeCounts": {
+        "POLYMERASE": 0,
+        "HELICASE": 8,
+        "LIGASE": 0
+      },
+      "totalTokens": 23096,
+      "duration_ms": 339094,
+      "phononTrace": 0.4667745,
+      "mendelianMode": "CHAOTIC"
+    },
+    {
+      "wave": 2,
+      "bestError": 1,
+      "bestWorkerIdx": 1,
+      "bestArchetype": "HELICASE",
+      "bestSubstrate": "gemini-3.1-pro-preview",
+      "successCount": 5,
+      "workerCount": 8,
+      "gatePassedCount": 6,
+      "archetypeCounts": {
+        "POLYMERASE": 0,
+        "HELICASE": 5,
+        "LIGASE": 1
+      },
+      "totalTokens": 18191,
+      "duration_ms": 504732,
+      "phononTrace": 0.49086016666666665,
+      "mendelianMode": "CHAOTIC"
+    }
+  ]
+}

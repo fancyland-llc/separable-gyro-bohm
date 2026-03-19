@@ -1,0 +1,72 @@
+{
+  "runId": 1773903724390,
+  "version": "4.0.0",
+  "timestamp": "2026-03-19T07:06:21.052Z",
+  "bvpName": "BOLTZMANN_FUSION_CONFINEMENT",
+  "total_waves": 1,
+  "converged": true,
+  "best_error": 0,
+  "best_technique": "spectral_graph_laplacian",
+  "error_trajectory": [
+    0
+  ],
+  "graveyard_techniques": [],
+  "technique_genealogy_summary": {
+    "total_techniques_tried": 8,
+    "distinct_techniques": 8,
+    "graveyard_size": 0,
+    "translation_gap_count": 0,
+    "g1_reproposals": 0
+  },
+  "failure_locus_summary": {
+    "total_failures": 0,
+    "cluster_type": "UNKNOWN",
+    "locus_values": []
+  },
+  "insight_trajectory_summary": {
+    "final_l1_similarity": 0.2297093881106406,
+    "final_l2_similarity": 0.32142857142857145,
+    "solver_diversity": 0.9306282244165778,
+    "domain_entropy": 0.9712720079261151
+  },
+  "reformulation_signals": {
+    "technique_classes_tried": 8,
+    "distinct_techniques": 8,
+    "class_histogram": {
+      "adjacency_boltzmann": 1,
+      "a_boltzmann": 1,
+      "1_and": 1,
+      "and_compute": 1,
+      "graph_laplacian": 1,
+      "a_based": 1,
+      "boltzmann_decomposition": 1,
+      "discrete_invariants": 1
+    },
+    "error_plateaued": false,
+    "broad_locus": false,
+    "iedi": {
+      "diversity_trend": "UNKNOWN",
+      "error_trend": "UNKNOWN",
+      "coupled": false,
+      "ratio": null
+    },
+    "reformulation_signal": false
+  },
+  "crystal": {
+    "technique": "spectral_graph_laplacian",
+    "error": null,
+    "archetype": "HELICASE"
+  },
+  "wilson_loop": {
+    "berry_phase_trajectory": [
+      0
+    ],
+    "tension_trajectory": [
+      0.040643783509537346
+    ],
+    "phase_transitions_detected": [],
+    "final_berry_phase": 0,
+    "whimsy_waves_fired": 0,
+    "waves_accumulated": 1
+  }
+}
