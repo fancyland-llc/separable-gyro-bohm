@@ -63,7 +63,8 @@ The **positive isotope exponent** M^(+1/5) matches the empirical IPB98 result M^
   title={Separable Gyro-Bohm Scaling for Fusion Energy Confinement: Resolving the Isotope Sign Conflict},
   author={Matos, Antonio P.},
   year={2026},
-  note={Zenodo DOI: [pending]}
+  doi={10.5281/zenodo.19117880},
+  url={https://zenodo.org/records/19117880}
 }
 ```
 
